@@ -20,6 +20,14 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#fafafa" />
 
+    <!-- CSS Reset -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Halfmoon CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.2/css/halfmoon.min.css"
@@ -37,685 +45,969 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-desktop-dark.min.css"
-      integrity="sha512-Cwdrdy7iqIj7n5XjgDqvpCOO4aztpoIISOcabdx5igD8Z51YuOWa8BBbI8+2oOI6Rf77xMZ1vAlXvGn6jc6O5Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body data-bs-theme="dark" class="p-4">
-    <div class="eve-panel rounded-0 card text-body mx-auto shadow bg-body-secondary" style="max-width: 800px">
-      <header
-        class="card-header rounded-0 d-flex justify-content-between align-items-center bg-primary bg-opacity-10 bg-gradient border-bottom border-secondary"
+  <body data-bs-theme="dark" data-bs-core="modern" class="p-1">
+    <main class="container">
+      <div
+        class="eve-panel card text-body mx-auto shadow-lg bg-body-tertiary container-fluid p-0"
       >
-      <hgroup>
-        <h5 class="d-inline-block">Corax</h5>
-        <small class="text-muted">(<i class="text-warning">Destroyer</i>): Information</small
+        <header
+          class="card-header bg-secondary bg-opacity-25 rounded-0 text-bg-secondary rounded d-flex justify-content-between align-items-center border-bottom border-secondary p-0"
         >
-      </hgroup>
-      <div class="ms-auto btn-group">
-        <button class="btn btn-outline-secondary btn-sm" title="Minimize">
-          ➖
-        </button>
-        <button class="btn btn-outline-secondary btn-sm" title="Maximize">
-          ➕
-        </button>
-        <button class="btn btn-outline-danger btn-sm" title="Close">
-          ✖️
-        </button>
-      </div>
-      </header>
-        <div class="d-flex align-items-center">
-          <img
-            src="https://images.evetech.net/types/32876/render"
-            class="me-3 rounded"
-            width="128"
-            alt="Corax"
-          />
+          <hgroup class="position-relative top-0 start-0 pt-1 px-3">
+            <h6 class="small d-inline-block">Corax</h6>
+            <small class="text-muted"
+              >(<i class="text-warning">Destroyer</i>): Information</small
+            >
+          </hgroup>
+          <div
+            class="position-absolute ms-auto btn-group position-relative end-0 top-0 p-0 px-2"
+          >
+            <button
+              class="btn btn-outline-secondary shadow-sm bg-secondary bg-opacity-100 bg-gradient p-1 px-3"
+              title="Minimize"
+            >
+              ➖
+            </button>
+            <button
+              class="btn btn-outline-danger shadow-sm bg-danger bg-opacity-100 p-1 px-3"
+              title="Close"
+            >
+              ✖️
+            </button>
+          </div>
+        </header>
+        <div class="card-body bg-body-secondary p-0">
+          <header class="d-flex align-items-center mb-2">
+            <img
+              src="https://images.evetech.net/types/32876/render"
+              class="m-2"
+              width="128"
+              alt="Corax"
+            />
+            <hgroup class="mx-3">
+              <h1 class="d-inline-block">Corax</h1>
+              <small class="text-muted"
+                >(<i class="text-warning">Destroyer</i>): Information</small
+              >
+            </hgroup>
+          </header>
 
+          <!-- Tabs -->
+          <div class="overflow-auto">
+            <menu
+              class="nav nav-tabs flex-nowrap"
+              id="coraxTabs"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="traits-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#traits-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="traits-pane"
+                  aria-selected="false"
+                >
+                  Traits
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active rounded-0"
+                  id="desc-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#desc-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="desc-pane"
+                  aria-selected="true"
+                >
+                  Description
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="attributes-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#attributes-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="attributes-pane"
+                  aria-selected="false"
+                >
+                  Attributes
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="fitting-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#fitting-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="fitting-pane"
+                  aria-selected="false"
+                >
+                  Fitting
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="requirements-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#requirements-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="requirements-pane"
+                  aria-selected="false"
+                >
+                  Requirements
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="mastery-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#mastery-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="mastery-pane"
+                  aria-selected="false"
+                >
+                  Mastery
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="variations-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#variations-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="variations-pane"
+                  aria-selected="false"
+                >
+                  Variations
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="industry-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#industry-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="industry-pane"
+                  aria-selected="false"
+                >
+                  Industry
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link rounded-0"
+                  id="skins-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#skins-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="skins-pane"
+                  aria-selected="false"
+                >
+                  Skins
+                </button>
+              </li>
+            </menu>
+          </div>
+
+          <!-- Tab Content -->
+          <div class="overflow-auto">
+            <div class="tab-content mt-3 p-0" id="coraxTabsContent">
+              <!-- Traits -->
+              <article
+                class="tab-pane fade"
+                id="traits-pane"
+                role="tabpanel"
+                aria-labelledby="traits-tab"
+                tabindex="0"
+              >
+                <h6 class="text-info">Ship Characteristics:</h6>
+                <div class="mb-3 d-flex gap-2 align-items-center">
+                  <span class="border p-2">🛠️</span>
+                  <span class="border p-2">🚀</span>
+                  <span class="border p-2">🛡️</span>
+                </div>
+                <h6 class="text-primary">
+                  Caldari Destroyer bonuses (&nbsp;<small class="text-secondary">per skill level</small>&nbsp;):
+                </h6>
+                <ul class="mb-3">
+                  <li>
+                    <strong class="text-primary">5%</strong> bonus to
+                    <i class=""
+                      ><strong>kinetic</strong>&nbsp;<a href="#" data-bs-toggle="tooltip" data-bs-title="Light Missile">Light Missile</a></i
+                    >
+                    and <i class="text-warning">Rocket</i> damage
+                  </li>
+                  <li>
+                    <strong class="text-primary">10%</strong> bonus to
+                    <i class="text-warning">Light Missile</i> and
+                    <i class="text-warning">Rocket</i> explosion velocity
+                  </li>
+                </ul>
+
+                <h6 class="text-info">Role Bonus:</h6>
+                <ul>
+                  <li>
+                    <strong class="text-primary">50%</strong> bonus to
+                    <i class="text-warning">Light Missile</i> and
+                    <i class="text-warning">Rocket</i> max velocity
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Description -->
+              <article
+                class="tab-pane fade show active p-2"
+                id="desc-pane"
+                role="tabpanel"
+                aria-labelledby="desc-tab"
+                tabindex="0"
+              >
+                <p class="p-1">
+                  The Corax adheres to the well-established Caldari design
+                  philosophy that there is strength in numbers, and that the
+                  messages sent to an enemy should be strong and unequivocal.
+                  This applies equally to peace talks as it does to actual
+                  engagements on the battlefield - there should be no doubt in
+                  the strength of Caldari spirit, nor the fact that when one
+                  blow has been struck, others are going to follow.
+                </p>
+                <p class="p-1">
+                  As such, the Corax does not pepper its opponents with pellets
+                  from a gun, nor does it toast them with continuous beams of
+                  light. Instead, it delivers strong, hard-hitting payloads at a
+                  pace that's not only steady, but rapid enough to rock its
+                  targets and knock them off-balance.
+                </p>
+              </article>
+
+              <!-- Attributes -->
+              <article
+                class="tab-pane fade my-1"
+                id="attributes-pane"
+                role="tabpanel"
+                aria-labelledby="attributes-tab"
+                tabindex="0"
+              >
+                <!-- STRUCTURE -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Structure
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/2_64_9.png" width="32" />Structure
+                      Hitpoints</span
+                    ><span>750 <abbr title="Hit Points">HP</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img
+                        src="./img/icons/3_64_13.png"
+                        width="32"
+                      />Capacity</span
+                    ><span>450 <abbr title="Cubic Meters">m³</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img
+                        src="./img/icons/2_64_10.png"
+                        width="32"
+                      />Mass</span
+                    ><span>1,750,000 <abbr title="Kilograms">kg</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img
+                        src="./img/icons/2_64_9.png"
+                        width="32"
+                      />Volume</span
+                    ><span
+                      >52,000 <abbr title="Cubic Meters">m³</abbr> (5,000
+                      <abbr title="Cubic Meters">m³</abbr> Packaged)</span
+                    >
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_24.png" width="32" />Inertia
+                      Modifier</span
+                    ><span>2.7x</span>
+                  </div>
+                  <div
+                    class="d-flex border bg-dark border-secondary-subtle my-3"
+                    style="height: 32px"
+                  >
+                    <img
+                      src="./img/icons/22_32_20.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body em"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill em"
+                          style="--val: 33%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        style="width: 33%"
+                        >33%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_18.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill thermal"
+                          style="--val: 33%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >33%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_17.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill kinetic"
+                          style="--val: 33%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >33%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_19.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill explosive"
+                          style="--val: 33%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >33%</span
+                      >
+                    </div>
+                  </div>
+                </section>
+                <hr />
+                <!-- ARMOR -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Armor
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/1_64_9.png" width="32" />Armor
+                      Hitpoints</span
+                    ><span>750 <abbr title="Hit Points">HP</abbr></span>
+                  </div>
+                  <div
+                    class="d-flex border bg-dark border-secondary-subtle my-3"
+                    style="height: 32px"
+                  >
+                    <img
+                      src="./img/icons/22_32_20.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body em"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill em"
+                          style="--val: 56%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        style="width: 56%"
+                        >56%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_18.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill thermal"
+                          style="--val: 45%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >45%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_17.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill kinetic"
+                          style="--val: 25%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >25%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_19.png"
+                      width="32"
+                      height="32"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill explosive"
+                          style="--val: 10%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >10%</span
+                      >
+                    </div>
+                  </div>
+                </section>
+                <hr />
+                <!-- SHIELD -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Shield
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/1_64_13.png" width="32" /> Shield
+                      Capacity</span
+                    ><span>1,000 <abbr title="Hit Points">HP</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_16.png" width="32" /> Shield
+                      recharge time</span
+                    ><span>625.0 <abbr title="Seconds">s</abbr></span>
+                  </div>
+                  <div class="d-flex my-3" style="height: 32px">
+                    <img
+                      src="./img/icons/22_32_20.png"
+                      width="32"
+                      height="32"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Electromagnetic"
+                      class="border-start ms-2"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div class="resistance-fill em" style="--val: 0%"></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >0%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_18.png"
+                      width="32"
+                      height="32"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Thermal"
+                      class="border-start"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill border-start"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill thermal"
+                          style="--val: 50%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >50%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_17.png"
+                      width="32"
+                      height="32"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Kinetic"
+                      class="border-start"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill border-start"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill kinetic"
+                          style="--val: 40%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >40%</span
+                      >
+                    </div>
+
+                    <img
+                      src="./img/icons/22_32_19.png"
+                      width="32"
+                      height="32"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Electromagnetic"
+                      class="border-start"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
+                    >
+                      <div class="resistance-bar w-100 h-100">
+                        <div
+                          class="resistance-fill explosive"
+                          style="--val: 50%"
+                        ></div>
+                      </div>
+                      <span
+                        class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                        >50%</span
+                      >
+                    </div>
+                  </div>
+                </section>
+                <hr />
+                <!-- CAPACITOR -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Capacitor
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/1_64_5.png" width="32" /> Capacitor
+                      Capacity</span
+                    ><span>500.0 <abbr title="Gigajoules">GJ</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_16.png" width="32" />
+                      Capacitor Recharge Time</span
+                    ><span>320 <abbr title="Seconds">s</abbr></span>
+                  </div>
+                </section>
+                <hr />
+                <!-- TARGETING -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Targeting
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_15.png" width="32" />Max
+                      Targeting Range</span
+                    ><span>45.00 <abbr title="Kilometers">km</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_23.png" width="32" /> Max
+                      Locked Targets</span
+                    ><span>7</span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_14.png" width="32" />
+                      Signature Radius</span
+                    ><span>69 <abbr title="Meters">m</abbr></span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_15.png" width="32" /> Scan
+                      Resolution</span
+                    ><span>475 <abbr title="Millimeters">mm</abbr></span>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between small pb-1"
+                  >
+                    <div
+                      class="d-flex w-100 my-3"
+                      style="height: 32px"
+                    >
+                      <img src="./img/icons/22_32_27.png" width="32" />
+                      <div
+                        class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary em"
+                      >
+                        <span
+                          class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                          >-</span
+                        >
+                      </div>
+                      <img src="./img/icons/22_32_26.png" width="32" />
+                      <div
+                        class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
+                      >
+                        <span
+                          class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                          >-</span
+                        >
+                      </div>
+                      <img src="./img/icons/22_32_25.png" width="32" />
+                      <div
+                        class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
+                      >
+                        <span
+                          class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                          >12 points</span
+                        >
+                      </div>
+                      <img src="./img/icons/22_32_28.png" width="32" />
+                      <div
+                        class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
+                      >
+                        <span
+                          class="position-absolute text-center fs-6 top-50 start-50 translate-middle small text-shadow"
+                          >-</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <hr />
+                <!-- PROPULSION -->
+                <section class="mt-3 attribute-section">
+                  <h4
+                    class="p-2 fw-semibold mb-2 border-bottom bg-secondary bg-opacity-25"
+                  >
+                    Propulsion
+                  </h4>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/22_32_13.png" wisth="32" /> Max
+                      Velocity</span
+                    ><span>235 m/sec</span>
+                  </div>
+                  <div class="d-flex justify-content-between p-1">
+                    <span
+                      ><img src="./img/icons/76_64_16.png" width="32" /> Ship
+                      Warp Speed</span
+                    ><span>4.50 AU/s</span>
+                  </div>
+                </section>
+              </article>
+
+              <!-- Fitting -->
+              <article
+                class="tab-pane fade"
+                id="fitting-pane"
+                role="tabpanel"
+                aria-labelledby="fitting-tab"
+                tabindex="0"
+              >
+                <section class="mb-4">
+                  <dl class="row">
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      [💻] CPU Output
+                    </dt>
+                    <dd class="col-4 text-end">200.0 tf</dd>
+
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      [⚡] Powergrid Output
+                    </dt>
+                    <dd class="col-4 text-end">39.0 MW</dd>
+
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      [💎] Calibration
+                    </dt>
+                    <dd class="col-4 text-end">400 points</dd>
+                  </dl>
+                </section>
+
+                <section class="mb-4">
+                  <dl class="row">
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      <img src="./img/icons/8_64_11.png" />High Power Slots
+                    </dt>
+                    <dd class="col-4 text-end">3</dd>
+
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      <img src="./img/icons/8_64_10.png" />Medium Power Slots
+                    </dt>
+                    <dd class="col-4 text-end">4</dd>
+
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      <img src="./img/icons/8_64_9.png" />Low Power Slots
+                    </dt>
+                    <dd class="col-4 text-end">2</dd>
+
+                    <dt class="col-8 d-flex align-items-center gap-2">
+                      <img src="./img/icons/8_64_11.png" />Small Rig Slots
+                    </dt>
+                    <dd class="col-4 text-end">3</dd>
+                  </dl>
+                </section>
+              </article>
+
+              <!-- Requirements -->
+              <article
+                class="tab-pane fade"
+                id="requirements-pane"
+                role="tabpanel"
+                aria-labelledby="requirements-tab"
+                tabindex="0"
+              >
+                <ul class="list-unstyled">
+                  <li class="d-flex justify-content-between align-items-center">
+                    <span>✅ Caldari Destroyer I</span>
+                    <span class="d-flex gap-1">
+                      <span
+                        class="bg-secondary"
+                        style="width: 12px; height: 12px"
+                      ></span>
+                    </span>
+                  </li>
+                  <li
+                    class="ms-4 d-flex justify-content-between align-items-center"
+                  >
+                    <span>✅ Caldari Frigate III</span>
+                    <span class="d-flex gap-1">
+                      <span
+                        class="bg-secondary"
+                        style="width: 12px; height: 12px"
+                      ></span>
+                      <span
+                        class="bg-secondary"
+                        style="width: 12px; height: 12px"
+                      ></span>
+                      <span
+                        class="bg-secondary"
+                        style="width: 12px; height: 12px"
+                      ></span>
+                    </span>
+                  </li>
+                  <li
+                    class="ms-5 d-flex justify-content-between align-items-center"
+                  >
+                    <span>✅ Spaceship Command I</span>
+                    <span class="d-flex gap-1">
+                      <span
+                        class="bg-secondary"
+                        style="width: 12px; height: 12px"
+                      ></span>
+                    </span>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Mastery -->
+              <article
+                class="tab-pane fade"
+                id="mastery-pane"
+                role="tabpanel"
+                aria-labelledby="mastery-tab"
+                tabindex="0"
+              ></article>
+
+              <!-- Variations -->
+              <article
+                class="tab-pane fade"
+                id="variations-pane"
+                role="tabpanel"
+                aria-labelledby="variations-tab"
+                tabindex="0"
+              >
+                <div class="mb-2 fw-bold border-bottom border-secondary">
+                  Tech I
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center py-1"
+                >
+                  <div class="d-flex align-items-center gap-2">
+                    <img
+                      src="https://images.evetech.net/types/32876/render"
+                      width="32"
+                    />
+                    <span>Corax</span>
+                  </div>
+                  <i class="text-secondary">ⓘ</i>
+                </div>
+                <div class="mt-3 mb-2 fw-bold border-bottom border-secondary">
+                  Tech II
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center py-1"
+                >
+                  <div class="d-flex align-items-center gap-2">
+                    <img
+                      src="https://images.evetech.net/types/37481/render"
+                      width="32"
+                    />
+                    <span>Stork</span>
+                  </div>
+                  <i class="text-secondary">ⓘ</i>
+                </div>
+              </article>
+
+              <!-- Industry -->
+              <article
+                class="tab-pane fade"
+                id="industry-pane"
+                role="tabpanel"
+                aria-labelledby="industry-tab"
+                tabindex="0"
+              >
+                <h6>Reprocessed Materials</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/34/icon"
+                      width="32"
+                    />Tritanium (57,000 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/35/icon"
+                      width="32"
+                    />Pyerite (24,000 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/36/icon"
+                      width="32"
+                    />Mexallon (8,400 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/37/icon"
+                      width="32"
+                    />Isogen (1,590 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/38/icon"
+                      width="32"
+                    />Nocxium (7 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/39/icon"
+                      width="32"
+                    />Zydrine (14 Units)
+                  </li>
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/40/icon"
+                      width="32"
+                    />Megacyte (14 Units)
+                  </li>
+                </ul>
+                <h6 class="mt-3">Required For</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark text-light">
+                    <img
+                      src="https://images.evetech.net/types/37617/bpc"
+                    />Stork Blueprint
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Skins -->
+              <article
+                class="tab-pane fade"
+                id="skin-pane"
+                role="tabpanel"
+                aria-labelledby="skins-tab"
+                tabindex="0"
+              ></article>
+            </div>
+          </div>
         </div>
-
-      <div class="card-body rounded-0 bg-body">
-        <!-- Tabs -->
-        <menu class="nav nav-tabs" id="coraxTabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="traits-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#traits-pane"
-              type="button"
-              role="tab"
-              aria-controls="traits-pane"
-              aria-selected="false"
-            >
-              Traits
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link active"
-              id="desc-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#desc-pane"
-              type="button"
-              role="tab"
-              aria-controls="desc-pane"
-              aria-selected="true"
-            >
-              Description
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="attributes-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#attributes-pane"
-              type="button"
-              role="tab"
-              aria-controls="attributes-pane"
-              aria-selected="false"
-            >
-              Attributes
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="fitting-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#fitting-pane"
-              type="button"
-              role="tab"
-              aria-controls="fitting-pane"
-              aria-selected="false"
-            >
-              Fitting
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="requirements-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#requirements-pane"
-              type="button"
-              role="tab"
-              aria-controls="requirements-pane"
-              aria-selected="false"
-            >
-              Requirements
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="mastery-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#mastery-pane"
-              type="button"
-              role="tab"
-              aria-controls="mastery-pane"
-              aria-selected="false"
-            >
-              Mastery
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="variations-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#variations-pane"
-              type="button"
-              role="tab"
-              aria-controls="variations-pane"
-              aria-selected="false"
-            >
-              Variations
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="industry-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#industry-pane"
-              type="button"
-              role="tab"
-              aria-controls="industry-pane"
-              aria-selected="false"
-            >
-              Industry
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link"
-              id="skins-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#skins-pane"
-              type="button"
-              role="tab"
-              aria-controls="skins-pane"
-              aria-selected="false"
-            >
-              Skins
-            </button>
-          </li>
-        </menu>
-
-        <!-- Tab Content -->
-        <div class="tab-content mt-3" id="coraxTabsContent">
-          <!-- Traits -->
-          <div
-            class="tab-pane fade"
-            id="traits-pane"
-            role="tabpanel"
-            aria-labelledby="traits-tab"
-            tabindex="0"
-          >
-            <h6 class="text-info">Ship Characteristics:</h6>
-            <div class="mb-3 d-flex gap-2 align-items-center">
-              <span class="border p-2">🛠️</span>
-              <span class="border p-2">🚀</span>
-              <span class="border p-2">🛡️</span>
-            </div>
-            <h6 class="text-info">
-              Caldari Destroyer bonuses <small>(per skill level)</small>:
-            </h6>
-            <ul class="mb-3">
-              <li>
-                <strong class="text-primary">5%</strong> bonus to
-                <i class="text-warning"
-                  ><strong>kinetic</strong> Light Missile</i
-                >
-                and <i class="text-warning">Rocket</i> damage
-              </li>
-              <li>
-                <strong class="text-primary">10%</strong> bonus to
-                <i class="text-warning">Light Missile</i> and
-                <i class="text-warning">Rocket</i> explosion velocity
-              </li>
-            </ul>
-
-            <h6 class="text-info">Role Bonus:</h6>
-            <ul>
-              <li>
-                <strong class="text-primary">50%</strong> bonus to
-                <i class="text-warning">Light Missile</i> and
-                <i class="text-warning">Rocket</i> max velocity
-              </li>
-            </ul>
-          </div>
-
-          <!-- Description -->
-          <div
-            class="tab-pane fade show active"
-            id="desc-pane"
-            role="tabpanel"
-            aria-labelledby="desc-tab"
-            tabindex="0"
-          >
-            <p>
-              The Corax adheres to the well-established Caldari design
-              philosophy that there is strength in numbers, and that the
-              messages sent to an enemy should be strong and unequivocal.
-            </p>
-            <p>
-              It delivers strong, hard-hitting payloads at a pace that's not
-              only steady, but rapid enough to rock its targets and knock them
-              off-balance.
-            </p>
-          </div>
-
-          <!-- Attributes -->
-          <div
-            class="tab-pane fade"
-            id="attributes-pane"
-            role="tabpanel"
-            aria-labelledby="attributes-tab"
-            tabindex="0"
-          >
-            <!-- STRUCTURE -->
-            <div class="mt-4">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Structure
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🧱] Structure Hitpoints</span><span>750 HP</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[📦] Capacity</span><span>450 m³</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[⚖️] Mass</span><span>1,750,000 kg</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[📐] Volume</span
-                ><span>52,000 m³ (5,000.0 m³ Packaged)</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🌀] Inertia Modifier</span><span>2.7x</span>
-              </div>
-              <div
-                class="d-flex justify-content-between small px-3 pb-1 text-secondary"
-              ></div>
-              <div
-                class="d-flex border bg-dark border-secondary-subtle mx-3 mb-4"
-                style="height: 2rem"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary em"
-                >
-                  <meter min="0" max="100" value="33"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >33%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
-                >
-                  <meter min="0" max="100" value="33"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >33%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
-                >
-                  <meter min="0" max="100" value="33"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >33%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
-                >
-                  <meter min="0" max="100" value="1"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >1%</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- ARMOR -->
-            <div class="attribute-section">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Armor
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🛡️] Armor Hitpoints</span><span>750 HP</span>
-              </div>
-              <div
-                class="d-flex justify-content-between small px-3 pb-1 text-secondary"
-              ></div>
-              <div
-                class="d-flex border bg-dark border-secondary-subtle mx-3 mb-4"
-                style="height: 2rem"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary em"
-                >
-                  <meter min="0" max="100" value="56"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >56%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
-                >
-                  <meter min="0" max="100" value="45"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >45%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
-                >
-                  <meter min="0" max="100" value="25"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >25%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
-                >
-                  <meter min="0" max="100" value="10"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >10%</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- SHIELD -->
-            <div class="attribute-section">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Shield
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🔋] Shield Capacity</span><span>1,000 HP</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[⏳] Shield recharge time</span><span>625.0 s</span>
-              </div>
-              <div
-                class="d-flex justify-content-between small px-3 pb-1 text-secondary"
-              ></div>
-              <div
-                class="d-flex border bg-dark border-secondary-subtle mx-3 mb-4"
-                style="height: 2rem"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary em"
-                >
-                  <meter min="0" max="100" value="0" class=""></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >0%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start thermal"
-                >
-                  <meter min="0" max="100" value="20"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >20%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start kinetic"
-                >
-                  <meter min="0" max="100" value="40"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >40%</span
-                  >
-                </div>
-                <div
-                  class="d-flex align-items-center justify-content-center position-relative flex-fill bg-body-secondary border-start explosive"
-                >
-                  <meter min="0" max="100" value="50"></meter
-                  ><span
-                    class="position-absolute top-50 start-50 translate-middle text-white small text-shadow"
-                    >50%</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- CAPACITOR -->
-            <div class="attribute-section">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Capacitor
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[⚡] Capacitor Capacity</span><span>500.0 GJ</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[⏱️] Capacitor Recharge Time</span><span>320.0 s</span>
-              </div>
-            </div>
-
-            <!-- TARGETING -->
-            <div class="attribute-section">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Targeting
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🎯] Max Targeting Range</span><span>45.00 km</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🎯] Max Locked Targets</span><span>7</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[📏] Signature Radius</span><span>69 m</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🎛️] Scan Resolution</span><span>475 mm</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[📡] Sensor Strength</span><span>12 points</span>
-              </div>
-            </div>
-
-            <!-- PROPULSION -->
-            <div class="attribute-section">
-              <h6
-                class="py-2 mx-3 fw-semibold mb-2 border-bottom bg-body-secondary"
-              >
-                Propulsion
-              </h6>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[💨] Max Velocity</span><span>235 m/sec</span>
-              </div>
-              <div class="d-flex justify-content-between px-3 py-1">
-                <span>[🚀] Ship Warp Speed</span><span>4.50 AU/s</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fitting -->
-          <div
-            class="tab-pane fade"
-            id="fitting-pane"
-            role="tabpanel"
-            aria-labelledby="fitting-tab"
-            tabindex="0"
-          >
-            <section class="mb-4">
-              <dl class="row">
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [💻] CPU Output
-                </dt>
-                <dd class="col-4 text-end">200.0 tf</dd>
-
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [⚡] Powergrid Output
-                </dt>
-                <dd class="col-4 text-end">39.0 MW</dd>
-
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [💎] Calibration
-                </dt>
-                <dd class="col-4 text-end">400 points</dd>
-              </dl>
-            </section>
-
-            <section class="mb-4">
-              <dl class="row">
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [🔫] High Power Slots
-                </dt>
-                <dd class="col-4 text-end">3</dd>
-
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [🔌] Medium Power Slots
-                </dt>
-                <dd class="col-4 text-end">4</dd>
-
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [🔧] Low Power Slots
-                </dt>
-                <dd class="col-4 text-end">2</dd>
-
-                <dt class="col-8 d-flex align-items-center gap-2">
-                  [📦] Small Rig Slots
-                </dt>
-                <dd class="col-4 text-end">3</dd>
-              </dl>
-            </section>
-          </div>
-
-          <!-- Requirements -->
-          <div
-            class="tab-pane fade"
-            id="requirements-pane"
-            role="tabpanel"
-            aria-labelledby="requirements-tab"
-            tabindex="0"
-          >
-            <ul class="list-unstyled">
-              <li class="d-flex justify-content-between align-items-center">
-                <span>✅ Caldari Destroyer I</span>
-                <span class="d-flex gap-1">
-                  <span
-                    class="bg-secondary"
-                    style="width: 12px; height: 12px"
-                  ></span>
-                </span>
-              </li>
-              <li
-                class="ms-4 d-flex justify-content-between align-items-center"
-              >
-                <span>✅ Caldari Frigate III</span>
-                <span class="d-flex gap-1">
-                  <span
-                    class="bg-secondary"
-                    style="width: 12px; height: 12px"
-                  ></span>
-                  <span
-                    class="bg-secondary"
-                    style="width: 12px; height: 12px"
-                  ></span>
-                  <span
-                    class="bg-secondary"
-                    style="width: 12px; height: 12px"
-                  ></span>
-                </span>
-              </li>
-              <li
-                class="ms-5 d-flex justify-content-between align-items-center"
-              >
-                <span>✅ Spaceship Command I</span>
-                <span class="d-flex gap-1">
-                  <span
-                    class="bg-secondary"
-                    style="width: 12px; height: 12px"
-                  ></span>
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Mastery -->
-          <div
-            class="tab-pane fade"
-            id="mastery-pane"
-            role="tabpanel"
-            aria-labelledby="mastery-tab"
-            tabindex="0"
-          ></div>
-
-          <!-- Variations -->
-          <div
-            class="tab-pane fade"
-            id="variations-pane"
-            role="tabpanel"
-            aria-labelledby="variations-tab"
-            tabindex="0"
-          >
-            <div class="mb-2 fw-bold border-bottom border-secondary">
-              Tech I
-            </div>
-            <div class="d-flex justify-content-between align-items-center py-1">
-              <div class="d-flex align-items-center gap-2">
-                <img
-                  src="https://images.evetech.net/types/32876/render"
-                  width="64"
-                />
-                <span>Corax</span>
-              </div>
-              <i class="text-secondary">ⓘ</i>
-            </div>
-            <div class="mt-3 mb-2 fw-bold border-bottom border-secondary">
-              Tech II
-            </div>
-            <div class="d-flex justify-content-between align-items-center py-1">
-              <div class="d-flex align-items-center gap-2">
-                <img
-                  src="https://images.evetech.net/types/37481/render"
-                  width="64"
-                />
-                <span>Stork</span>
-              </div>
-              <i class="text-secondary">ⓘ</i>
-            </div>
-          </div>
-
-          <!-- Industry -->
-          <div
-            class="tab-pane fade"
-            id="industry-pane"
-            role="tabpanel"
-            aria-labelledby="industry-tab"
-            tabindex="0"
-          >
-            <h6>Reprocessed Materials</h6>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/34/icon" width="64"/>Tritanium (57,000 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/35/icon" width="64"/>Pyerite (24,000 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/36/icon" width="64"/>Mexallon (8,400 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/37/icon" width="64"/>Isogen (1,590 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/38/icon" width="64"/>Nocxium (7 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/39/icon" width="64"/>Zydrine (14 Units)
-              </li>
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/40/icon" width="64"/>Megacyte (14 Units)
-              </li>
-            </ul>
-            <h6 class="mt-3">Required For</h6>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-dark text-light">
-                <img src="https://images.evetech.net/types/37617/bpc"/>Stork Blueprint</li>
-            </ul>
-          </div>
-
-          <!-- Skins -->
-          <div
-            class="tab-pane fade"
-            id="skin-pane"
-            role="tabpanel"
-            aria-labelledby="skins-tab"
-            tabindex="0"
-          ></div>
-        </div>
       </div>
-    </div>
+    </main>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
